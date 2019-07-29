@@ -1,71 +1,73 @@
+const app = getApp();
 var tokenkey = "token";
+
 //api接口地址
 var apiurl = "http://localhost:63102/api";
 
 
+function test(a, b) {
+  console.log(a);
+  console.log(b);
+  if (typeof(b) == "undefined") {
+    console.log(typeof(b));
+  }
+}
+
+
 
 //post提交
-function postapi(code, params, success) {
+function postapi(code, params, success, token) {
+  if (typeof(token) == "undefined") {
+    token = app.gettoken();
+  }
 
   //接口数据格式
   var param = {
-    Token: gettoken(),
+    Token: token,
     Function: code,
     Data: JSON.stringify(params),
   };
-
+  // console.log("发送：");
+  // console.log(param);
   wx.request({
     url: apiurl,
-    data: params,
-    dataType:'json',
+    data: param,
+    dataType: 'json',
     method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
     // header: {}, // 设置请求的 header
-    success: function (res) {
-      console.log(d);
-      if(res.statusCode!=200)
-      {
-
+    success: function(res) {
+      // console.log(code + "返回：");
+      // console.log(res);
+      //debugger;
+      var data = res.data;
+      if(data.code!=0){
+        console.log(code+"：返回");
+        console.log(data);
       }
-      else
-      {
-        var data = res.data;
+
+      if (typeof(success) == "function") {
         success(data);
       }
-      
+
+
 
     },
-    fail: function () {
+    fail: function() {
       // fail
     },
-    complete: function () {
+    complete: function() {
       // complete
     }
   })
 
 }
 
-function gettoken() {
-  try {
-    var token = wx.getStorageSync(tokenkey);
-    if (token) {
-      return token;
-    }
-    return null;
-  } catch (e) {
-    return null;
-  }
-}
 
-function settoken(token) {
-  wx.setStorage({
-    key: tokenkey,
-    data: token,
-  })
-}
+
+
+
 
 module.exports = {
-  gettoken,
-  settoken,
-  postapi,
   test,
+  postapi,
 }

@@ -1,17 +1,44 @@
 <!--index.wxml-->
 <view class="container">
-<cover-image class="userinfo-avatar" src="https://s2.ax1x.com/2019/06/27/ZuPgUS.jpg" />
-  <view class="userinfo">
-  
-  
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击登录 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+
+  <!--轮播-->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='width:100%;height:200px;'>
+    <block wx:for="{{noticeList}}" wx:key='index'>
+      <swiper-item>
+        <image src="{{item.image}}" class="slide-image" />
+        <viem class='ma'>{{item.title}}</viem>
+      </swiper-item>
     </block>
+  </swiper>
+
+ 
+<!--<view class="address">
+ 地址：广州市天河区泰安和路口123号
+ </view>-->
+<!--我是一条分割线-->
+  <view class="xian"></view>
+<view class="classname">{{mini.classname}}</view>
+<!--横滑动  菜品推荐-->
+  <scroll-view scroll-x="true" class="sc">
+    <view class="miu" wx:for="{{foodList}}" wx:key='index' data-id="{{item.id}}" data-name="{{item.name}}" bindtap='jj'>
+      <image src="{{item.image}}" class="ie"></image>
+      <!--<viem class='mi'>{{item.name}}</viem>-->
+      <viem class='ma'>{{item.name}}</viem>
+    </view>
+  </scroll-view>
+  
+  
+
+  <!--方形 店铺-->
+  <view class="system">
+    <view class="system_ding" wx:for="{{shopList}}" wx:key='index' >
+      <image data-id="{{item.id}}" bindtap="system" class="system_img" src="{{item.image}}" data-ptype="{{item.ptype}}">
+      {{item.name}}</image>
+      <view class="mi">{{item.name}}</view>
+    </view>
   </view>
-  <!-- <button  bindtap="test">测试 </button> -->
-  <!-- <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view> -->
+
+  
+
+  
 </view>

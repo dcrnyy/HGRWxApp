@@ -2,9 +2,11 @@
   "pages": [
     "pages/welcome/welcome",
     "pages/index/index",
-    "pages/foodlist/foodlist",
-    "pages/main/main",
-    "pages/logs/logs"
+    "pages/shop/index",
+    "pages/order/index",
+    "pages/user/index",
+    "pages/user/about",
+    "pages/exit/exit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -12,5 +14,32 @@
     "navigationBarTitleText": "阿甘囧",
     "navigationBarTextStyle": "black"
   },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#FF8C00",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "src/images/index.png",
+        "selectedIconPath": "src/images/indexsel.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order/index",
+        "iconPath": "src/images/order.png",
+        "selectedIconPath": "src/images/ordersel.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "src/images/user.png",
+        "selectedIconPath": "src/images/usersel.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "debug": false,
   "sitemapLocation": "sitemap.json"
 }
