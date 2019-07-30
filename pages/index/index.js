@@ -6,49 +6,14 @@ const req = require('../../src/request.js')
 
 Page({
   data: {
-    //轮播图
-    imgUrls: ["https://s2.ax1x.com/2019/07/24/eEXGnK.jpg", "https://s2.ax1x.com/2019/07/24/eEv6YQ.jpg", "https://s2.ax1x.com/2019/07/24/eEvRln.jpg"],
     indicatorDots: true,
     autoplay: true,
     interval: 2000,
     interval: 3000,
     duration: 1000,
-    //顶部推荐
-    indeximg: ["https://s2.ax1x.com/2019/07/24/eEXGnK.jpg", "https://s2.ax1x.com/2019/07/24/eEv6YQ.jpg", "https://s2.ax1x.com/2019/07/24/eEvRln.jpg", "https://s2.ax1x.com/2019/06/27/ZuPgUS.jpg"],
-    prolist: [{
-      id: 1,
-      photo: "https://s2.ax1x.com/2019/06/27/ZuPgUS.jpg",
-      cname: "cname",
-      name: "name"
-    }, {
-      id: 2,
-      photo: "https://s2.ax1x.com/2019/07/24/eEXGnK.jpg",
-      cname: "cname2",
-      name: "name2"
-    }, {
-      id: 3,
-      photo: "https://s2.ax1x.com/2019/06/27/ZuPgUS.jpg",
-      cname: "cname3",
-      name: "name3"
-    }, {
-      id: 4,
-      photo: "https://s2.ax1x.com/2019/07/24/eEXGnK.jpg",
-      cname: "cname4",
-      name: "name4"
-    }, {
-      id: 5,
-      photo: "https://s2.ax1x.com/2019/06/27/ZuPgUS.jpg",
-      cname: "cname5",
-      name: "name5"
-    }],
-    mini: {
-      classname: "菜式推荐"
-    },
+    
 
-
-
-
-    noticeList: [], //公告
+    noticeList: [], //顶部公告 轮播图
     foodList: [],   //菜式推荐
     shopList: []     //店铺
   },
@@ -60,7 +25,7 @@ Page({
     var that = this;
     var brandId = app.globalData.brandId;
     req.postapi("APPGetIndex", brandId, function (result) {
-      console.log(result);
+      //console.log(result);
       that.setData({
         noticeList: result.data.noticeList,
         foodList: result.data.foodList,
