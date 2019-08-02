@@ -2,8 +2,12 @@
   "pages": [
     "pages/welcome/welcome",
     "pages/index/index",
+
     "pages/shop/index",
+
     "pages/order/index",
+		"pages/order/seladdress",
+
     "pages/user/index",
     "pages/user/about",
     "pages/exit/exit"

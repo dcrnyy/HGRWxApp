@@ -43,6 +43,12 @@ function postapi(code, params, success, token) {
       if(data.code!=0){
         console.log(code+"：返回");
         console.log(data);
+        if (data.code==5){
+          wx.navigateTo({
+            url: '/pages/welcome/welcome',
+          });
+          return false;
+        }
       }
 
       if (typeof(success) == "function") {
